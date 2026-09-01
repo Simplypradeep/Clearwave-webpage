@@ -708,7 +708,7 @@ strong{
     border-radius: 4px;
 }  
 .features__container{
-    max-width: 100%;
+    max-width: 1160px;
     margin: 0 auto;
     padding: 0 2rem;
 }
