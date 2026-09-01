@@ -7,6 +7,6 @@ export const options = {
 };
 
 export default function () {
-    http.get('http://YOUR-EC2-IP');
+    http.get('http://100.58.115.5');
     sleep(1);
 }
