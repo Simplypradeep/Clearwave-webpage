@@ -1,5 +1,5 @@
 import http from 'k6/http';
-import { sleep } from 'k6';
+import { check, sleep } from 'k6';
 
 export const options = {
     vus: 10,
@@ -7,6 +7,31 @@ export const options = {
 };
 
 export default function () {
-    http.get('http://100.58.115.5');
+
+    const baseUrl = 'http://184.73.135.213';
+
+    const responses = http.batch([
+        ['GET', `${baseUrl}/`],
+        ['GET', `${baseUrl}/clearwave.css`],
+        ['GET', `${baseUrl}/clearwave.js`],
+        ['GET', `${baseUrl}/images/phone-shell.jpg`],
+        ['GET', `${baseUrl}/images/screen2.jpg`],
+        ['GET', `${baseUrl}/images/screen3.jpg`],
+        ['GET', `${baseUrl}/images/screen4.jpg`],
+        ['GET', `${baseUrl}/images/screen5.jpg`],
+    ]);
+
+    check(responses[0], {
+        'HTML loaded': (r) => r.status === 200,
+    });
+
+    check(responses[1], {
+        'CSS loaded': (r) => r.status === 200,
+    });
+
+    check(responses[2], {
+        'JavaScript loaded': (r) => r.status === 200,
+    });
+
     sleep(1);
 }
