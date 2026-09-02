@@ -8,7 +8,7 @@ export const options = {
 
 export default function () {
 
-    const baseUrl = 'http://184.73.135.213';
+    const baseUrl = 'http://54.158.25.203';
 
     const responses = http.batch([
         ['GET', `${baseUrl}/`],
